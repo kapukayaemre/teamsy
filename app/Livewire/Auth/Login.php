@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Events\UserLoggedIn;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -30,6 +31,8 @@ class Login extends Component
 
             return;
         }
+
+        event(new UserLoggedIn(Auth::user()));
 
         return redirect()->intended(route('home'));
     }
