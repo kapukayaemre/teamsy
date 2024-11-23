@@ -29,8 +29,8 @@
                 </svg>
             </div>
 
-            <div class="text-white text-center my-2">
-                <p>{{ User::count() }} </p>
+            <div class="text-center my-2">
+               <livewire:department-form />
             </div>
 
             <div class="mt-16">
