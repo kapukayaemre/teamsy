@@ -2,11 +2,10 @@
 
 namespace App\Livewire\Auth;
 
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Auth\Events\Registered;
 use Livewire\Component;
 
 class Register extends Component
@@ -30,7 +29,6 @@ class Register extends Component
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
         ]);
-
 
         $user = User::create([
             'email' => $this->email,
