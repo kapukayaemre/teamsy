@@ -5,20 +5,12 @@ namespace {{ namespace }};
 {{ factoryImport }}
 use App\Models\Scopes\TenantScope;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 #[ScopedBy([TenantScope::class])]
 class {{ class }} extends Model
 {
     {{ factory }}
+    use BelongsToTenant;
 
-    protected static function booted()
-        {
-            parent::booted();
-
-            static::creating(static function ($model) {
-                if (session()->has('tenant_id')) {
-                    $model->tenant_id = session()->get('tenant_id');
-                }
-            });
-        }
 }
